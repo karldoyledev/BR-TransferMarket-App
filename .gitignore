@@ -1,0 +1,19 @@
+# .NET build outputs
+bin/
+obj/
+*.user
+
+# Visual Studio
+.vs/
+.vscode/
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Test results
+TestResults/
+*.trx
+
+# IDE / OS noise
+.DS_Store
+Thumbs.db

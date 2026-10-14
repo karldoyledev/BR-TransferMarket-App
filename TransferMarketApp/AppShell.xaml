@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="TransferMarketApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:TransferMarketApp.Views"
+    Title="TransferMarketApp"
+    FlyoutBehavior="Disabled">
+
+    <!-- Login is the first (default) screen on cold launch -->
+    <ShellContent
+        Title="Sign In"
+        ContentTemplate="{DataTemplate views:LoginPage}"
+        Route="LoginPage" />
+
+    <!-- Main page is reached after authentication via //MainPage -->
+    <ShellContent
+        Title="Transfer Market"
+        ContentTemplate="{DataTemplate views:MainPage}"
+        Route="MainPage" />
+
+</Shell>

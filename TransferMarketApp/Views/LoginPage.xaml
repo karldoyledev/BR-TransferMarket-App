@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:TransferMarketApp.Core.ViewModels"
+             xmlns:converters="clr-namespace:TransferMarketApp.Converters"
+             x:Class="TransferMarketApp.Views.LoginPage"
+             x:DataType="vm:LoginViewModel"
+             Shell.NavBarIsVisible="False">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:InverseBoolConverter x:Key="InverseBool" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="32" Spacing="16" VerticalOptions="Center">
+
+            <!-- Title -->
+            <Label Text="Transfer Market"
+                   FontSize="32"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+            <Label Text="Sign in to continue"
+                   FontSize="16"
+                   TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray300}}"
+                   HorizontalOptions="Center"
+                   Margin="0,0,0,24" />
+
+            <!-- Username -->
+            <Label Text="Username" FontAttributes="Bold" />
+            <Border StrokeThickness="1"
+                    Stroke="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray600}}"
+                    StrokeShape="RoundRectangle 8"
+                    Padding="12,0">
+                <Entry Text="{Binding Username}"
+                       Placeholder="Enter your username"
+                       ReturnType="Next"
+                       AutomationId="UsernameEntry" />
+            </Border>
+
+            <!-- Password -->
+            <Label Text="Password" FontAttributes="Bold" />
+            <Border StrokeThickness="1"
+                    Stroke="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray600}}"
+                    StrokeShape="RoundRectangle 8"
+                    Padding="12,0">
+                <Entry Text="{Binding Password}"
+                       Placeholder="Enter your password"
+                       IsPassword="True"
+                       ReturnType="Done"
+                       AutomationId="PasswordEntry" />
+            </Border>
+
+            <!-- Remember me -->
+            <Grid ColumnDefinitions="Auto,*">
+                <CheckBox IsChecked="{Binding RememberMe}"
+                          Color="{StaticResource Primary}"
+                          AutomationId="RememberMeCheckBox" />
+                <Label Grid.Column="1"
+                       Text="Remember me"
+                       VerticalOptions="Center" />
+            </Grid>
+
+            <!-- Error message -->
+            <Label Text="{Binding ErrorMessage}"
+                   TextColor="{StaticResource Error}"
+                   FontSize="14"
+                   IsVisible="{Binding HasError}"
+                   AutomationId="ErrorLabel" />
+
+            <!-- Login button -->
+            <Button Text="Sign In"
+                    Command="{Binding LoginCommand}"
+                    IsEnabled="{Binding IsBusy, Converter={StaticResource InverseBool}}"
+                    BackgroundColor="{StaticResource Primary}"
+                    TextColor="White"
+                    CornerRadius="8"
+                    HeightRequest="48"
+                    FontSize="16"
+                    AutomationId="LoginButton" />
+
+            <!-- Loading indicator -->
+            <ActivityIndicator IsRunning="{Binding IsBusy}"
+                               IsVisible="{Binding IsBusy}"
+                               HorizontalOptions="Center" />
+
+            <!-- Footer links -->
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="4">
+                <Label Text="Forgot password?"
+                       TextColor="{StaticResource Primary}"
+                       FontAttributes="Bold">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Text="·" TextColor="{AppThemeBinding Light={StaticResource Gray400}, Dark={StaticResource Gray500}}" />
+                <Label Text="Sign up"
+                       TextColor="{StaticResource Primary}"
+                       FontAttributes="Bold">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SignUpCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

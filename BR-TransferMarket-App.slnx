@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="TransferMarketApp.Core/TransferMarketApp.Core.csproj" />
+  <Project Path="TransferMarketApp.Tests/TransferMarketApp.Tests.csproj" />
+  <Project Path="TransferMarketApp.UITests/TransferMarketApp.UITests.csproj" />
+  <Project Path="TransferMarketApp/TransferMarketApp.csproj" />
+</Solution>
