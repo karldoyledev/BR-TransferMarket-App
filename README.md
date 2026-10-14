@@ -46,7 +46,7 @@ BR-TransferMarket-App/
 ├── TransferMarketApp/           # .NET MAUI app (Shell, Views, platform services)
 ├── TransferMarketApp.Core/      # Platform-agnostic Models, ViewModels, Services
 ├── TransferMarketApp.Tests/     # xUnit unit + integration tests
-├── TransferMarketApp.UITests/   # Appium UI tests (scaffold — no tests yet)
+├── TransferMarketApp.UITests/   # Appium UI tests (Android, via UiAutomator2)
 └── BR-TransferMarket-App.slnx   # Solution
 ```
 
